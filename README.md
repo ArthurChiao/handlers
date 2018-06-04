@@ -1,31 +1,16 @@
-gorilla/handlers
+handlers
 ================
-[![GoDoc](https://godoc.org/github.com/gorilla/handlers?status.svg)](https://godoc.org/github.com/gorilla/handlers) [![Build Status](https://travis-ci.org/gorilla/handlers.svg?branch=master)](https://travis-ci.org/gorilla/handlers)
-[![Sourcegraph](https://sourcegraph.com/github.com/gorilla/handlers/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/handlers?badge)
 
+The direct reason of this fork from [`gorilla/handlers`](github.com/gorilla/handlers) is that the logging handlers in
+`gorilla/handlers` doesn't contain response time information, which not
+satifies some monitoring cases, e.g. API response time over time.
 
-Package handlers is a collection of handlers (aka "HTTP middleware") for use
-with Go's `net/http` package (or any framework supporting `http.Handler`), including:
+## Changes of this fork with upstream `gorilla/handlers`
 
-* [**LoggingHandler**](https://godoc.org/github.com/gorilla/handlers#LoggingHandler) for logging HTTP requests in the Apache [Common Log
-  Format](http://httpd.apache.org/docs/2.2/logs.html#common).
-* [**CombinedLoggingHandler**](https://godoc.org/github.com/gorilla/handlers#CombinedLoggingHandler) for logging HTTP requests in the Apache [Combined Log
-  Format](http://httpd.apache.org/docs/2.2/logs.html#combined) commonly used by
-  both Apache and nginx.
-* [**CompressHandler**](https://godoc.org/github.com/gorilla/handlers#CompressHandler) for gzipping responses.
-* [**ContentTypeHandler**](https://godoc.org/github.com/gorilla/handlers#ContentTypeHandler) for validating requests against a list of accepted
-  content types.
-* [**MethodHandler**](https://godoc.org/github.com/gorilla/handlers#MethodHandler) for matching HTTP methods against handlers in a
-  `map[string]http.Handler`
-* [**ProxyHeaders**](https://godoc.org/github.com/gorilla/handlers#ProxyHeaders) for populating `r.RemoteAddr` and `r.URL.Scheme` based on the
-  `X-Forwarded-For`, `X-Real-IP`, `X-Forwarded-Proto` and RFC7239 `Forwarded`
-  headers when running a Go server behind a HTTP reverse proxy.
-* [**CanonicalHost**](https://godoc.org/github.com/gorilla/handlers#CanonicalHost) for re-directing to the preferred host when handling multiple 
-  domains (i.e. multiple CNAME aliases).
-* [**RecoveryHandler**](https://godoc.org/github.com/gorilla/handlers#RecoveryHandler) for recovering from unexpected panics.
+* LoggingHandler: add `response time` (in `ms`) as the last field
+* CombinedLoggingHandler: add `response time` (in `ms`) as the last field
 
-Other handlers are documented [on the Gorilla
-website](http://www.gorillatoolkit.org/pkg/handlers).
+For original docs, see github.com/gorilla/handlers.
 
 ## Example
 
@@ -34,7 +19,7 @@ A simple example using `handlers.LoggingHandler` and `handlers.CompressHandler`:
 ```go
 import (
     "net/http"
-    "github.com/gorilla/handlers"
+    "github.com/arthurchiao/handlers"
 )
 
 func main() {
@@ -52,4 +37,3 @@ func main() {
 ## License
 
 BSD licensed. See the included LICENSE file for details.
-
