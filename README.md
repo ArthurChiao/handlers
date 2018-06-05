@@ -7,8 +7,8 @@ satifies some monitoring cases, e.g. API response time over time.
 
 ## Changes of this fork with upstream `gorilla/handlers`
 
-* LoggingHandler: add `response time` (in `ms`) as the last field
-* CombinedLoggingHandler: add `response time` (in `ms`) as the last field
+* LoggingHandler: add `response time` (in `us`) as the last field
+* CombinedLoggingHandler: add `response time` (in `us`) as the last field
 
 For original docs, see github.com/gorilla/handlers.
 
